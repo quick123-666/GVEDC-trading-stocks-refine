@@ -1,0 +1,10 @@
+# 数据库连接配置
+databases:
+  # 关系型数据库 (SQLite)
+  relational:
+    type: sqlite
+    path: ./data/gvedc.db
+
+  # 向量数据库 (ChromaDB)
+  vector:
+    path: ./data/chroma

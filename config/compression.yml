@@ -1,0 +1,65 @@
+# 压缩策略配置
+compression:
+  # 数据分层
+  tiers:
+    hot:
+      compression: light  # 轻量级压缩，优先性能
+      retention: 7d       # 7天
+    warm:
+      compression: medium # 中等压缩，平衡性能和存储
+      retention: 30d      # 30天
+    cold:
+      compression: heavy  # 高压缩，优先存储
+      retention: 90d      # 90天
+
+  # 各数据库压缩设置
+  encyclopedia:
+    hot:
+      codec: deflate
+      level: 3
+    warm:
+      codec: deflate
+      level: 6
+    cold:
+      codec: deflate
+      level: 9
+
+  vector:
+    hot:
+      quantization: none
+    warm:
+      quantization: pq_8
+    cold:
+      quantization: pq_16
+
+  graph:
+    hot:
+      compression: false
+    warm:
+      compression: true
+    cold:
+      compression: true
+      level: high
+
+  relational:
+    hot:
+      compression: false
+    warm:
+      compression: true
+      method: lz4
+    cold:
+      compression: true
+      method: zstd
+
+  time_series:
+    hot:
+      compression: true
+      method: lz4
+    warm:
+      compression: true
+      method: zstd
+      level: 3
+    cold:
+      compression: true
+      method: zstd
+      level: 9

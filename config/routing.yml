@@ -1,0 +1,31 @@
+# 查询路由配置
+routing:
+  # 查询类型映射
+  query_types:
+    full_text: encyclopedia
+    semantic: vector
+    relational: graph
+    metadata: relational
+    historical: time_series
+
+  # 路由规则
+  rules:
+    - pattern: "SELECT.*FROM trading_stocks"
+      target: relational
+    - pattern: "GET /search.*q="
+      target: encyclopedia
+    - pattern: "similarity.*query"
+      target: vector
+    - pattern: "MATCH.*WHERE"
+      target: graph
+    - pattern: "SELECT.*WHERE time>"
+      target: time_series
+
+  # 联合查询配置
+  join:
+    enabled: true
+    timeout: 30s
+    cache:
+      enabled: true
+      size: 1000
+      ttl: 5m
