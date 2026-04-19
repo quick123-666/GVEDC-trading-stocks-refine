@@ -1,0 +1,17 @@
+# GVEDC - Graph-Vector-Encyclopedia-Database-Context
+# Dependencies
+
+# Vector database
+chromadb>=0.4.0
+
+# Optional: For document processing
+# PyPDF2>=3.0.0
+# python-docx>=0.8.11
+
+# Optional: For natural language processing
+# nltk>=3.8.1
+# spacy>=3.5.0
+
+# Optional: For graph visualization
+# networkx>=3.0
+# matplotlib>=3.7.0
